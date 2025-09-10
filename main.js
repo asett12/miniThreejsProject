@@ -9,9 +9,18 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("canvas-container").appendChild(renderer.domElement);
 
-const light = new THREE.DirectionalLight(0xffffff, 1);
+const light = new THREE.DirectionalLight(0xffffff, 2);
 light.position.set(2, 2, 5);
 scene.add(light);
+
+const textureLoader = new THREE.TextureLoader();
+const textures = [
+  'public/assets/textures/Grass.jpg',
+  'public/assets/textures/Brick.jpg',
+  'public/assets/textures/Tile.jpg',
+  'public/assets/textures/Tile2.jpg',
+  'public/assets/textures/Leather.jpg',
+];
 
 let material = new THREE.MeshStandardMaterial({color: 0x920C0C});
 const geometries = {
@@ -59,6 +68,14 @@ document.getElementById("shapeBtn").addEventListener("click", () => {
     currentMesh.rotation.set(0, 0, 0);
 
     scene.add(currentMesh);
+});
+
+document.getElementById("textureBtn").addEventListener("click", () => {
+  const randomTexturePath = textures[Math.floor(Math.random() * textures.length)];
+  textureLoader.load(randomTexturePath, (texture) => {
+    currentMesh.material.map = texture;
+    currentMesh.material.needsUpdate = true;
+  });
 });
 
 window.addEventListener("resize", () => {
