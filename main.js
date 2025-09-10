@@ -9,17 +9,13 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("canvas-container").appendChild(renderer.domElement);
 
-const light = new THREE.DirectionalLight(0xffffff, 2);
-light.position.set(2, 2, 5);
-scene.add(light);
-
 const textureLoader = new THREE.TextureLoader();
 const textures = [
-  'public/assets/textures/Grass.jpg',
-  'public/assets/textures/Brick.jpg',
-  'public/assets/textures/Tile.jpg',
-  'public/assets/textures/Tile2.jpg',
-  'public/assets/textures/Leather.jpg',
+  'assets/textures/Grass.jpg',
+  'assets/textures/Brick.jpg',
+  'assets/textures/Tile.jpg',
+  'assets/textures/Tile2.jpg',
+  'assets/textures/Leather.jpg',
 ];
 
 let material = new THREE.MeshStandardMaterial({color: 0x920C0C});
@@ -37,6 +33,10 @@ let currentMesh = new THREE.Mesh(geometries.cube, material);
 scene.add(currentMesh);
 
 camera.position.z = 3;
+
+const light = new THREE.DirectionalLight(0xffffff, 2);
+light.position.set(2, 2, 5);
+scene.add(light);
 
 let isRotating = false;
 function animate() {
