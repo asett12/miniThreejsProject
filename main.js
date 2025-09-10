@@ -5,9 +5,11 @@ const camera = new THREE.PerspectiveCamera(
     0.1,
     1000
 );
+
+const canvasContainer = document.getElementById("canvas-container");
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById("canvas-container").appendChild(renderer.domElement);
+renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
+canvasContainer.appendChild(renderer.domElement);
 
 const textureLoader = new THREE.TextureLoader();
 const textures = [
@@ -83,7 +85,7 @@ document.getElementById("textureBtn").addEventListener("click", () => {
 });
 
 window.addEventListener("resize", () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = canvasContainer.clientWidth / canvasContainer.clientHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
 });
