@@ -9,12 +9,31 @@
 <body class="bg-gray-900 flex flex-col items-center">
   <div id="canvas-container" class="w-screen h-[80vh]"></div>
   
-  <div id="controls" class="flex gap-3 my-4">
-    <button id="playBtn" class="px-4 py-2 rounded-lg font-bold bg-blue-500 text-white hover:bg-blue-600 transition">Play</button>
-    <button id="colorBtn" class="px-4 py-2 rounded-lg font-bold bg-blue-500 text-white hover:bg-blue-600 transition">Change Color</button>
-    <button id="shapeBtn" class="px-4 py-2 rounded-lg font-bold bg-blue-500 text-white hover:bg-blue-600 transition">Change Shape</button>
-    <button id="textureBtn" class="px-4 py-2 rounded-lg font-bold bg-blue-500 text-white hover:bg-blue-600 transition">Random Texture</button>
-  </div>
+<div id="controls" class="flex gap-3 my-4">
+    <button id="playBtn" class="flex items-center justify-center px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition">
+        <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+            <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+        </svg>
+    </button>
+
+    <button id="colorBtn" class="flex items-center justify-center px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12c0 4.418 3.582 8 8 8 1.378 0 2.5-1.122 2.5-2.5S13.378 15 12 15a1 1 0 0 1 0-2c1.378 0 2.5-1.122 2.5-2.5S13.378 8 12 8a1 1 0 0 1 0-2c1.378 0 2.5-1.122 2.5-2.5S13.378 1 12 1c-5.523 0-10 4.477-10 10s4.477 10 10 10z"/>
+        </svg>
+    </button>
+
+    <button id="shapeBtn" class="flex items-center justify-center px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+            <path d="M21 16V8a2 2 0 0 0-1-1.732l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.732l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        </svg>
+    </button>
+
+    <button id="textureBtn" class="flex items-center justify-center px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+            <path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM5 5h14v14H5V5zm3 9l2.5 3 3-4L17 17H7l1-3z"/>
+        </svg>
+    </button>
+</div>
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
   <script src="main.js"></script>
 </body>
