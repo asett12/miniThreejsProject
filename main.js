@@ -1,3 +1,7 @@
+import * as THREE from "https://unpkg.com/three@0.155.0/build/three.module.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
     75,
@@ -10,6 +14,13 @@ const canvasContainer = document.getElementById("canvas-container");
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
 canvasContainer.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.enableZoom = true;
+controls.enablePan = true;   
+
 
 const textureLoader = new THREE.TextureLoader();
 const textures = [
@@ -47,6 +58,7 @@ function animate() {
         currentMesh.rotation.x += 0.01;
         currentMesh.rotation.y += 0.01;
   }
+  controls.update();
   renderer.render(scene, camera);
 }
 animate();

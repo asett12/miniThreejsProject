@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <title>Three.js Mini Project</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@v0.180.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.180.0/examples/jsm/"
+        }
+      }
+  </script>
 </head>
 <body class="bg-gray-900 flex flex-col min-h-screen items-center">
   <div id="canvas-container" class="w-full h-[70vh] sm:h-[80vh]"></div>
@@ -34,7 +41,6 @@
         </svg>
     </button>
 </div>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-  <script src="main.js"></script>
+  <script type="module" src="/main.js"></script>
 </body>
 </html>
