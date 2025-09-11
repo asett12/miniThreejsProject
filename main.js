@@ -1,6 +1,10 @@
-import * as THREE from "https://unpkg.com/three@0.155.0/build/three.module.js";
+import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
+const animationBtn = document.getElementById("animation-style");
+const colorBtn = document.getElementById("colorBtn");
+const shapeBtn = document.getElementById("shapeBtn");
+const textureBtn = document.getElementById("textureBtn");
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -51,32 +55,46 @@ const light = new THREE.DirectionalLight(0xffffff, 2);
 light.position.set(2, 2, 5);
 scene.add(light);
 
+const animationNames = ["None", "Rotate", "Bounce", "Orbit", "360-Rotate"];
+let animationStyle = 0;
+
 let isRotating = false;
+let clock = new THREE.Clock();
 function animate() {
   requestAnimationFrame(animate);
-  if (isRotating) {
-        currentMesh.rotation.x += 0.01;
-        currentMesh.rotation.y += 0.01;
+  const t = clock.getElapsedTime();
+  switch (animationStyle){
+    case 1:
+      currentMesh.rotation.x += 0.01;
+      currentMesh.rotation.y += 0.01;
+      break;
+    case 2: // bounce
+      currentMesh.position.y = Math.sin(t * 2) * 1;
+      break;
+
+    case 3: // orbit
+      currentMesh.position.x = Math.cos(t * 3) * 1;
+      currentMesh.position.y = Math.sin(t * 3) * 1;
+      break;
+
+    case 4: // cube rotate
+      currentMesh.rotation.x = Math.sin(t * 3) * 1;
+      currentMesh.rotation.y = Math.cos(t * 3) * 1;
+
+    default: 
+      currentMesh.position.set(0, 0, 0);
+      break;
   }
   controls.update();
   renderer.render(scene, camera);
 }
 animate();
 
-document.getElementById("playBtn").addEventListener("click", () => {
-    isRotating = !isRotating;
-    if (isRotating){
-        playIcon.innerHTML = `<path fill-rule="evenodd" d="M6 5h4v14H6V5zm8 0h4v14h-4V5z" clip-rule="evenodd"/>`
-    } else {
-        playIcon.innerHTML = `<path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd"/>`
-    }
-});
-
-document.getElementById("colorBtn").addEventListener("click", () => {
+colorBtn.addEventListener("click", () => {
     currentMesh.material.color.set(Math.random() * 0xffffff);
 });
 
-document.getElementById("shapeBtn").addEventListener("click", () => {
+shapeBtn.addEventListener("click", () => {
     const currentMaterial = currentMesh.material;
     scene.remove(currentMesh);
 
@@ -88,7 +106,7 @@ document.getElementById("shapeBtn").addEventListener("click", () => {
     scene.add(currentMesh);
 });
 
-document.getElementById("textureBtn").addEventListener("click", () => {
+textureBtn.addEventListener("click", () => {
   const randomTexturePath = textures[Math.floor(Math.random() * textures.length)];
   textureLoader.load(randomTexturePath, (texture) => {
     currentMesh.material.map = texture;
@@ -96,8 +114,22 @@ document.getElementById("textureBtn").addEventListener("click", () => {
   });
 });
 
-window.addEventListener("resize", () => {
-    camera.aspect = canvasContainer.clientWidth / canvasContainer.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
+
+animationBtn.addEventListener("click", () => {
+  animationStyle = animationStyle + 1;  
+  if (animationStyle >= animationNames.length) {
+    animationStyle = 0;  
+  }
+  animationBtn.textContent = "Style: " + animationNames[animationStyle];
 });
+
+function onWindowResize(){
+  const w = canvasContainer.offsetWidth;
+  const h = canvasContainer.offsetHeight;
+  camera.aspect = w/h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w,h);
+}
+onWindowResize();
+
+window.addEventListener("resize", onWindowResize);
