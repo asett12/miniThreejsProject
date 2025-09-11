@@ -14,3 +14,16 @@ https://mini-threejs-project.vercel.app
 git clone https://github.com/asett12/miniThreejsProject.git
 cd miniThreejsProject
 npx serve .
+
+✨ Features
+- Three.js scene with camera, renderer, and loop
+- OrbitControls for rotate/zoom/pan
+- Directional lights
+- Basic 3D objects with textures
+- Responsive resize handling
+
+🧠 Learnings
+- Using requestAnimationFrame for smooth updates
+- Handling perspective camera + resize events
+- Lighting basics (Directional Light)
+- Organizing assets for models/textures
