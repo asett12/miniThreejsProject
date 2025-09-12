@@ -17,29 +17,14 @@
 
   <div class="flex w-full max-w-7xl gap-6">
     <div id="canvas-container" class="flex-1 h-[70vh] sm:h-[80vh] bg-black rounded-lg"></div>
-    <div class="flex flex-col items-center gap-4 w-40">
-      <button id="animation-style" class="w-35 h-25 px-6 py-4 rounded-lg bg-blue-500 text-white hover:bg-blue-600">
-        Animation Style
+    <div class="flex flex-col w-44 sm:w-56 gap-3 sm:sticky sm:top-6">
+      <button id="animation-style" class="w-full h-12 rounded-xl bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 font-medium">
+        Style: None
       </button>
-
-      <button id="colorBtn" class="w-35 h-25 flex items-center justify-center px-6 py-4 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8" viewBox="0 0 24 24">
-              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12c0 4.418 3.582 8 8 8 1.378 0 2.5-1.122 2.5-2.5S13.378 15 12 15a1 1 0 0 1 0-2c1.378 0 2.5-1.122 2.5-2.5S13.378 8 12 8a1 1 0 0 1 0-2c1.378 0 2.5-1.122 2.5-2.5S13.378 1 12 1c-5.523 0-10 4.477-10 10s4.477 10 10 10z"/>
-          </svg>
-      </button>
-
-      <button id="shapeBtn" class="flex items-center justify-center px-6 py-4 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8" viewBox="0 0 24 24">
-              <path d="M21 16V8a2 2 0 0 0-1-1.732l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.732l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-          </svg>
-      </button>
-
-      <button id="textureBtn" class="flex items-center justify-center px-6 py-4 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8" viewBox="0 0 24 24">
-              <path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM5 5h14v14H5V5zm3 9l2.5 3 3-4L17 17H7l1-3z"/>
-          </svg>
-      </button>
-      
+      <button id="colorBtn" class="w-full h-16 rounded-xl bg-gray-800 text-gray-200 hover:bg-gray-700 focus:ring-2 focus:ring-blue-500">Color</button>
+      <button id="shapeBtn" class="w-full h-16 rounded-xl bg-gray-800 text-gray-200 hover:bg-gray-700 focus:ring-2 focus:ring-blue-500">Shape</button>
+      <button id="textureBtn" class="w-full h-16 rounded-xl bg-gray-800 text-gray-200 hover:bg-gray-700 focus:ring-2 focus:ring-blue-500">Texture</button>
+      <button id="addObjBtn" class="w-full h-16 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-2 focus:ring-emerald-400">Add OBJ</button>
     </div>
   </div>
 
