@@ -7,6 +7,15 @@ const shapeBtn = document.getElementById("shapeBtn");
 const textureBtn = document.getElementById("textureBtn");
 
 const scene = new THREE.Scene();
+const cubeTextureLoader = new THREE.CubeTextureLoader();
+scene.background = cubeTextureLoader.load([
+  "assets/skybox/px.png",
+  "assets/skybox/nx.png",
+  "assets/skybox/py.png",
+  "assets/skybox/ny.png",
+  "assets/skybox/pz.png",
+  "assets/skybox/nz.png"
+]);
 const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / (window.innerHeight * 0.9),
@@ -37,12 +46,12 @@ const textures = [
 
 let material = new THREE.MeshStandardMaterial({color: 0x920C0C});
 const geometries = {
-    cube: new THREE.BoxGeometry(1.5, 1.5, 1.5), 
-    sphere: new THREE.SphereGeometry(0.75, 32, 32), 
-    cone: new THREE.ConeGeometry(0.75, 1.5, 32), 
-    torus: new THREE.TorusGeometry(0.75, 0.25, 16, 64), 
-    capsule: new THREE.CapsuleGeometry(0.6, 1.2, 8, 16), 
-    torusKnot: new THREE.TorusKnotGeometry(0.7, 0.25, 128, 32) 
+    cube: new THREE.BoxGeometry(0.8, 0.8, 0.8), 
+    sphere: new THREE.SphereGeometry(0.4, 32, 32), 
+    cone: new THREE.ConeGeometry(0.4, 0.8, 32), 
+    torus: new THREE.TorusGeometry(0.4, 0.15, 16, 64), 
+    capsule: new THREE.CapsuleGeometry(0.3, 0.6, 8, 16), 
+    torusKnot: new THREE.TorusKnotGeometry(0.35, 0.15, 128, 32) 
 };
 
 
@@ -52,8 +61,12 @@ scene.add(currentMesh);
 camera.position.z = 3;
 
 const light = new THREE.DirectionalLight(0xffffff, 2);
-light.position.set(2, 2, 5);
+light.intensity = 1.5;
+light.position.set(5, 8, 5);
 scene.add(light);
+
+const hemi = new THREE.HemisphereLight(0xbddaff, 0x404040, 0.6); // sky, ground, intensity
+scene.add(hemi);
 
 const animationNames = ["None", "Rotate", "Bounce", "Orbit", "360-Rotate"];
 let animationStyle = 0;
