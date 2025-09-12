@@ -27,3 +27,6 @@ npx serve .
 - Handling perspective camera + resize events
 - Lighting basics (Directional Light)
 - Organizing assets for models/textures
+
+<img width="1434" height="855" alt="Screenshot 2568-09-12 at 14 09 11" src="https://github.com/user-attachments/assets/fec7d1fa-f683-462b-8c22-72b543fc80f6" />
+
